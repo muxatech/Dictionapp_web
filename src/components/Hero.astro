@@ -43,15 +43,21 @@ import appScreenshot2 from '../assets/screenshot2.png';
         <!-- Download Buttons -->
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            href="<https://play.google.com/store>"
+            href="https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-2 px-8 py-6 text-lg rounded-lg transition-colors hover:opacity-90"
             style="background-color: #FFC93C; color: #0C2F39; font-weight: 700;"
           >
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
-              <path d="M12 18h.01"></path>
+            <svg
+              class="h-6 w-6"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path fill="#34A853" d="M1.5 0.5v23l13-11.5z"/>
+              <path fill="#FBBC05" d="M14.5 12L1.5 0.5 17 9.7z"/>
+              <path fill="#EA4335" d="M17 9.7L22.5 12 17 14.3 1.5 23z"/>
+              <path fill="#4285F4" d="M1.5 0.5l21 11.5-21 11.5z" opacity=".2"/>
             </svg>
             Descargar en Google Play
           </a>
@@ -62,9 +68,12 @@ import appScreenshot2 from '../assets/screenshot2.png';
               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-6 text-lg rounded-lg opacity-60 cursor-not-allowed"
               style="background-color: #155263; color: #FFD76F; font-weight: 700;"
             >
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-              </svg>
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/appstore.svg"
+                alt="App Store Icon"
+                class="h-6 w-6"
+                
+              />
               Descargar en App Store
             </button>
             <span
