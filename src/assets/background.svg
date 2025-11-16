@@ -1,0 +1,47 @@
+
+<svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cross pattern -->
+    <pattern id="cross-pattern" patternUnits="userSpaceOnUse" width="60" height="60">
+      <path d="M 30 0 L 30 60 M 0 30 L 60 30" stroke="#1E758D" strokeWidth="0.8" opacity="0.12" />
+    </pattern>
+    
+    <!-- Scattered dots - varied sizes -->
+    <pattern id="dots-c" patternUnits="userSpaceOnUse" width="90" height="90">
+      <circle cx="20" cy="20" r="2" fill="#FFC93C" opacity="0.16" />
+      <circle cx="70" cy="45" r="1.5" fill="#FFBB09" opacity="0.14" />
+      <circle cx="45" cy="70" r="1" fill="#155263" opacity="0.1" />
+    </pattern>
+    
+    <!-- Subtle wave pattern -->
+    <pattern id="wave-line" patternUnits="userSpaceOnUse" width="100" height="40">
+      <path d="M 0 20 Q 25 10 50 20 T 100 20" stroke="#FFD76F" strokeWidth="1" fill="none" opacity="0.08" />
+    </pattern>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="1200" height="800" fill="#FAFBFC" />
+  
+  <!-- Pattern layers -->
+  <rect width="1200" height="800" fill="url(#cross-pattern)" />
+  <rect width="1200" height="800" fill="url(#dots-c)" />
+  <rect width="1200" height="800" fill="url(#wave-line)" />
+
+  <!-- Vertical accent lines -->
+  <g stroke="#FFC93C" strokeWidth="1.5" opacity="0.09">
+    <line x1="300" y1="0" x2="300" y2="800" />
+    <line x1="900" y1="0" x2="900" y2="800" />
+  </g>
+
+  <!-- Study-inspired elements -->
+  <rect x="100" y="120" width="200" height="140" fill="none" stroke="#155263" strokeWidth="2.5" opacity="0.11" />
+  <rect x="920" y="560" width="200" height="140" fill="none" stroke="#FFBB09" strokeWidth="2.5" opacity="0.13" />
+
+  <!-- Margin lines - like notebook -->
+  <line x1="80" y1="0" x2="80" y2="800" stroke="#FFD76F" strokeWidth="1" opacity="0.05" />
+  <line x1="1120" y1="0" x2="1120" y2="800" stroke="#1E758D" strokeWidth="1" opacity="0.05" />
+
+  <!-- Floating accent shapes -->
+  <circle cx="120" cy="100" r="50" fill="#FFD76F" opacity="0.04" />
+  <circle cx="1080" cy="700" r="90" fill="#0C2F39" opacity="0.03" />
+</svg>
