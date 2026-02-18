@@ -29,6 +29,8 @@ import Layout from '../layouts/Layout.astro';
         return;
       }
 
+      console.log(import.meta.env.PUBLIC_SUPABASE_URL);
+
       const supabase = createClient(
         import.meta.env.PUBLIC_SUPABASE_URL,
         import.meta.env.PUBLIC_SUPABASE_ANON_KEY
