@@ -3,24 +3,63 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Dictionapp - Downloads">
-    <p>Redirecting...</p>
+  <p>Redirecting...</p>
 
-    <script>
-      (() => {
-        const ua = navigator.userAgent;
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-        const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    (() => {
+      const ua = navigator.userAgent;
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-        const iosLink = "https://apps.apple.com/es/app/dictionapp/id6754826488";
-        const otherLink = "https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp&pcampaignid=web_share";
+      const iosLink = "https://apps.apple.com/es/app/dictionapp/id6754826488";
+      const androidLink = "https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp&pcampaignid=web_share";
 
-        if (isIOS) {
+      if (!isIOS) {
+        window.location.replace(androidLink);
+        return;
+      }
+
+      // --- iOS only ---
+      const params = new URLSearchParams(window.location.search);
+      const affiliateCode = params.get("r");
+
+      if (!affiliateCode) {
+        window.location.replace(iosLink);
+        return;
+      }
+
+      const supabase = createClient(
+        import.meta.env.PUBLIC_SUPABASE_URL,
+        import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+      );
+
+      const run = async () => {
+        const { data: affiliate, error } = await supabase
+          .from("Affiliate")
+          .select("code, active")
+          .eq("code", affiliateCode)
+          .single();
+
+        if (error || !affiliate || !affiliate.active) {
           window.location.replace(iosLink);
-        } else {
-          window.location.replace(otherLink);
+          return;
         }
-      })();
-    </script>
+
+        // 2️⃣ Insertar deferred
+        await supabase.from("deferred").insert({
+          affiliate_code: affiliateCode,
+          platform: "ios",
+          user_agent: navigator.userAgent,
+          language: navigator.language,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+        });
+
+        // 3️⃣ Redirigir a App Store
+        window.location.replace(iosLink);
+      };
+
+      run();
+    })();
+  </script>
 </Layout>
-
-
