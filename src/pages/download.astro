@@ -4,66 +4,138 @@ import Layout from '../layouts/Layout.astro';
 const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 ---
-
 <Layout title="Dictionapp - Downloads">
   <p>Redirecting...</p>
 
-  <script type="module" define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }} >
+  <script
+    type="module"
+    define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}
+  >
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
     (() => {
+      /* ==========================
+         DEBUG HELPER
+      ========================== */
+      const log = (label, value) => {
+        document.body.innerHTML += `
+          <p style="font-family: monospace">
+            <strong>${label}:</strong>
+            ${typeof value === "object"
+              ? JSON.stringify(value, null, 2)
+              : value}
+          </p>
+        `;
+      };
+
+      log("Script started", "OK");
+
+      /* ==========================
+         PLATFORM DETECTION
+      ========================== */
       const ua = navigator.userAgent;
       const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-      const iosLink = "https://apps.apple.com/es/app/dictionapp/id6754826488";
-      const androidLink = "https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp&pcampaignid=web_share";
+      log("User agent", ua);
+      log("isIOS", isIOS);
 
-      /*if (!isIOS) {
-        window.location.replace(androidLink);
-        return;
-      }*/
+      const iosLink =
+        "https://apps.apple.com/es/app/dictionapp/id6754826488";
+      const androidLink =
+        "https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp&pcampaignid=web_share";
 
-      // --- iOS only ---
+      /* ==========================
+         QUERY PARAMS
+      ========================== */
       const params = new URLSearchParams(window.location.search);
       const affiliateCode = params.get("r");
 
+      log("affiliateCode", affiliateCode);
+
       if (!affiliateCode) {
-        window.location.replace(iosLink);
+        log("No affiliate code", "redirecting to App Store");
+        // window.location.replace(iosLink);
         return;
       }
 
+      /* ==========================
+         ENV CHECK
+      ========================== */
+      log("SUPABASE_URL", SUPABASE_URL);
+      log("SUPABASE_ANON_KEY present", !!SUPABASE_ANON_KEY);
 
-      document.body.innerHTML += `<p>Supabase URL:</p>`;
-      document.body.innerHTML += `<p>${SUPABASE_URL}</p>`;
-
+      /* ==========================
+         SUPABASE CLIENT
+      ========================== */
       const supabase = createClient(
-        import.meta.env.PUBLIC_SUPABASE_URL,
-        import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
       );
 
+      log("Supabase client", "created");
+
+      /* ==========================
+         MAIN LOGIC
+      ========================== */
       const run = async () => {
-        const { data: affiliate, error } = await supabase
+        log("Query Affiliate", "starting");
+
+        const res = await supabase
           .from("Affiliate")
           .select("code, active")
           .eq("code", affiliateCode)
           .single();
 
-        if (error || !affiliate || !affiliate.active) {
-          window.location.replace(iosLink);
+        log("Affiliate response", res);
+
+        const { data: affiliate, error } = res;
+
+        if (error) {
+          log("Affiliate error", error.message);
           return;
         }
 
-        // 2️⃣ Insertar deferred
-        await supabase.from("deferred").insert({
-          affiliate_code: affiliateCode,
-          platform: "ios",
-          user_agent: navigator.userAgent,
-          language: navigator.language,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-        });
+        if (!affiliate) {
+          log("Affiliate", "null");
+          return;
+        }
 
-        // 3️⃣ Redirigir a App Store
-        window.location.replace(iosLink);
+        log("Affiliate.active", affiliate.active);
+
+        if (!affiliate.active) {
+          log("Affiliate inactive", affiliate.code);
+          // window.location.replace(iosLink);
+          return;
+        }
+
+        log("Affiliate valid", affiliate.code);
+
+        /* ==========================
+           INSERT DEFERRED
+        ========================== */
+        const insertRes = await supabase
+          .from("deferred")
+          .insert({
+            affiliate_code: affiliateCode,
+            platform: "ios",
+            user_agent: navigator.userAgent,
+            language: navigator.language,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+          });
+
+        log("Deferred insert response", insertRes);
+
+        if (insertRes.error) {
+          log("Deferred insert error", insertRes.error.message);
+          return;
+        }
+
+        log("Deferred insert", "OK");
+
+        /* ==========================
+           FINAL REDIRECT
+        ========================== */
+        // window.location.replace(iosLink);
       };
 
       run();
