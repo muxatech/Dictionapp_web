@@ -1,144 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 ---
 <Layout title="Dictionapp - Downloads">
-  <p>Redirecting...</p>
+  <p>Redirecting…</p>
 
-  <script
-    type="module"
-    define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}
-  >
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
+  <script type="module">
     (() => {
-      /* ==========================
-         DEBUG HELPER
-      ========================== */
-      const log = (label, value) => {
-        document.body.innerHTML += `
-          <p style="font-family: monospace">
-            <strong>${label}:</strong>
-            ${typeof value === "object"
-              ? JSON.stringify(value, null, 2)
-              : value}
-          </p>
-        `;
-      };
-
-      log("Script started", "OK");
-
-      /* ==========================
-         PLATFORM DETECTION
-      ========================== */
       const ua = navigator.userAgent;
       const isIOS = /iPhone|iPad|iPod/i.test(ua);
-
-      log("User agent", ua);
-      log("isIOS", isIOS);
+      const isAndroid = /Android/i.test(ua);
 
       const iosLink =
         "https://apps.apple.com/es/app/dictionapp/id6754826488";
-      const androidLink =
-        "https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp&pcampaignid=web_share";
 
-      /* ==========================
-         QUERY PARAMS
-      ========================== */
+      const androidBaseLink =
+        "https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp";
+
       const params = new URLSearchParams(window.location.search);
       const affiliateCode = params.get("r");
 
-      log("affiliateCode", affiliateCode);
-
-      if (!affiliateCode) {
-        log("No affiliate code", "redirecting to App Store");
-        // window.location.replace(iosLink);
+      // iOS → siempre App Store
+      if (isIOS) {
+        window.location.replace(iosLink);
         return;
       }
 
-      /* ==========================
-         ENV CHECK
-      ========================== */
-      log("SUPABASE_URL", SUPABASE_URL);
-      log("SUPABASE_ANON_KEY present", !!SUPABASE_ANON_KEY);
+      // Android
+      if (isAndroid) {
+        if (affiliateCode) {
+          const encoded = encodeURIComponent(affiliateCode);
+          const androidLinkWithReferrer =
+            `${androidBaseLink}&referrer=r%3D${encoded}`;
 
-      /* ==========================
-         SUPABASE CLIENT
-      ========================== */
-      const supabase = createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
-      );
-
-      log("Supabase client", "created");
-
-      /* ==========================
-         MAIN LOGIC
-      ========================== */
-      const run = async () => {
-        log("Query Affiliate", "starting");
-
-        const res = await supabase
-          .from("Affiliate")
-          .select("code, active")
-          .eq("code", affiliateCode)
-          .single();
-
-        log("Affiliate response", res);
-
-        const { data: affiliate, error } = res;
-
-        if (error) {
-          log("Affiliate error", error.message);
-          return;
+          window.location.replace(androidLinkWithReferrer);
+        } else {
+          window.location.replace(androidBaseLink);
         }
+        return;
+      }
 
-        if (!affiliate) {
-          log("Affiliate", "null");
-          return;
-        }
-
-        log("Affiliate.active", affiliate.active);
-
-        if (!affiliate.active) {
-          log("Affiliate inactive", affiliate.code);
-          // window.location.replace(iosLink);
-          return;
-        }
-
-        log("Affiliate valid", affiliate.code);
-
-        /* ==========================
-           INSERT DEFERRED
-        ========================== */
-        const insertRes = await supabase
-          .from("deferred")
-          .insert({
-            affiliate_code: affiliateCode,
-            platform: "ios",
-            user_agent: navigator.userAgent,
-            language: navigator.language,
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-          });
-
-        log("Deferred insert response", insertRes);
-
-        if (insertRes.error) {
-          log("Deferred insert error", insertRes.error.message);
-          return;
-        }
-
-        log("Deferred insert", "OK");
-
-        /* ==========================
-           FINAL REDIRECT
-        ========================== */
-        // window.location.replace(iosLink);
-      };
-
-      run();
+      // Fallback (desktop, otros)
+      window.location.replace(androidBaseLink);
     })();
   </script>
 </Layout>
