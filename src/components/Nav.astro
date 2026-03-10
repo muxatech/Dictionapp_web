@@ -1,0 +1,71 @@
+---
+import logoImage from '../assets/logo.png';
+
+const { current = "" } = Astro.props;
+---
+
+<nav class="container mx-auto px-6 py-6">
+  <div class="flex items-center justify-between">
+
+    <!-- Logo (link a Home) -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img
+        src={logoImage.src}
+        alt="Dictionapp Logo"
+        class="h-12 w-12 object-contain transition-transform group-hover:scale-105"
+      />
+
+      <span
+        class="text-2xl font-bold"
+        style="color:#0C2F39;"
+      >
+        Dictionapp
+      </span>
+    </a>
+
+    <!-- Navigation links -->
+    <div class="flex items-center gap-3">
+
+        <a
+            href="/"
+            class={`nav-item ${current === "home" ? "active" : ""}`}
+        >
+            Inicio
+        </a>
+
+        <a
+            href="/enfoque-educativo"
+            class={`nav-item ${current === "enfoque-educativo" ? "active" : ""}`}
+        >
+            Enfoque educativo
+        </a>
+
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav-item {
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 700;
+    color: #0C2F39;
+    background: transparent;
+    transition: all 0.2s ease;
+    }
+
+    /* hover suave */
+    .nav-item:hover {
+    background: rgba(30,117,141,0.12);
+    }
+
+    /* página activa */
+    .nav-item.active {
+    background: #1E758D;
+    color: white;
+    }
+
+    nav {
+    backdrop-filter: blur(8px);
+    }
+</style>

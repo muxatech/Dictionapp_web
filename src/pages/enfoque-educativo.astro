@@ -1,0 +1,359 @@
+---
+import video3Options from '../assets/3_options.mp4';
+import videoWords from '../assets/words.mp4';
+import Nav from '../components/Nav.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dictionapp - Downloads">
+<div class="relative min-h-screen overflow-hidden">
+
+  <Nav current="enfoque-educativo" />
+
+  <!-- CONTENT -->
+  <main class="container mx-auto px-6 pb-24 max-w-4xl">
+
+    <!-- Header -->
+    <header class="mb-16 space-y-6">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold leading-tight"
+        style="color:#0C2F39;"
+      >
+        Dictionapp — <span style="color:#1E758D;">Enfoque educativo</span>
+      </h1>
+
+      <p class="text-xl" style="color:#155263; font-weight:500;">
+        Información orientada a la evaluación pedagógica de la herramienta.
+      </p>
+    </header>
+
+    <!-- Qué es -->
+    <section class="space-y-6 mb-16">
+      <h2 class="section-title">Qué es Dictionapp</h2>
+
+      <p>
+        Dictionapp es una herramienta digital diseñada para ayudar al estudiante
+        a trabajar activamente el vocabulario que desea aprender en un idioma.
+      </p>
+
+      <p>
+        Permite crear un repertorio léxico propio y transformarlo automáticamente
+        en ejercicios interactivos, facilitando una práctica continua,
+        personalizada y orientada a la consolidación del aprendizaje.
+      </p>
+
+      <p>
+        Su objetivo es complementar el aprendizaje formal mediante trabajo
+        autónomo centrado en vocabulario relevante para cada usuario.
+      </p>
+    </section>
+
+    <!-- Problema -->
+    <section class="space-y-10 mb-16">
+      <h2 class="section-title">Qué problema resuelve</h2>
+
+      <p>
+        El aprendizaje de vocabulario constituye uno de los elementos centrales
+        en la adquisición de un idioma, pero los métodos habituales suelen
+        presentar ineficiencias relacionadas con la personalización y la
+        retención a largo plazo.
+      </p>
+
+      <!-- Método 1 -->
+      <div class="method-card">
+        <h3>Aprendizaje por memorización</h3>
+
+        <p class="italic">Ejemplo: anotar palabras en una libreta.</p>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+          <div>
+            <h4 class="adv">Ventajas</h4>
+            <ul>
+              <li>Alta personalización: el estudiante decide qué aprender.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="dis">Inconvenientes</h4>
+            <ul>
+              <li>Alto esfuerzo cognitivo.</li>
+              <li>Falta de práctica estructurada.</li>
+              <li>Baja retención a largo plazo sin refuerzo activo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Método 2 -->
+      <div class="method-card">
+        <h3>Aprendizaje por asociación</h3>
+
+        <p class="italic">Ejemplo: flashcards.</p>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+          <div>
+            <h4 class="adv">Ventajas</h4>
+            <ul>
+              <li>Aprendizaje más ligero.</li>
+              <li>Mayor retención gracias a la repetición.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="dis">Inconvenientes</h4>
+            <ul>
+              <li>Trabajan grupos de palabras predefinidos.</li>
+              <li>Puede incluir vocabulario irrelevante.</li>
+              <li>Dificultad para integrar vocabulario propio.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="font-medium" style="color:#0C2F39;">
+        Ambos enfoques presentan una limitación común: combinar
+        <strong>personalización real</strong> con
+        <strong>práctica eficiente sostenida</strong>.
+      </p>
+    </section>
+
+    <!-- Propuesta -->
+    <section class="space-y-6 mb-16">
+      <h2 class="section-title">Propuesta educativa</h2>
+
+      <blockquote class="quote">
+        La práctica del vocabulario es más eficaz cuando se realiza
+        exclusivamente sobre palabras relevantes para el propio estudiante.
+      </blockquote>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li>aumentar la frecuencia de práctica,</li>
+        <li>reducir la fricción del estudio individual,</li>
+        <li>favorecer la implicación del estudiante,</li>
+        <li>mejorar la retención a largo plazo.</li>
+      </ul>
+
+      <p>
+        El foco no está en introducir más contenido, sino en optimizar la
+        práctica del contenido que cada alumno realmente necesita aprender.
+      </p>
+    </section>
+
+    <!-- Implementación -->
+    <section class="space-y-10 mb-16">
+      <h2 class="section-title">Cómo lo implementa Dictionapp</h2>
+
+      <!-- Diccionario -->
+      <div>
+        <h3 class="sub-title">1. Diccionario personal</h3>
+
+        <p>
+          El usuario crea su propio diccionario con las palabras que desea
+          aprender.
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>listado con búsqueda, filtrado y ordenación,</li>
+          <li>comprobación automática de duplicados,</li>
+          <li>sugerencias opcionales de traducción.</li>
+        </ul>
+
+        <div class="iphone-wrapper">
+          <div class="iphone-frame">
+            <video
+              src={videoWords}
+              autoplay
+              muted
+              loop
+              playsinline
+              class="iphone-video"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Ejercicios -->
+      <div>
+        <h3 class="sub-title">
+          2. Ejercicios construidos a partir del vocabulario del usuario
+        </h3>
+
+        <p class="font-semibold mt-4">
+          Ejemplo práctico: juego de las tres opciones
+        </p>
+
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Se muestra una palabra del diccionario.</li>
+          <li>Aparecen tres posibles traducciones.</li>
+          <li>El objetivo es seleccionar la correcta consecutivamente.</li>
+        </ul>
+
+        <p class="mt-4">
+          Las opciones incorrectas pertenecen también al repertorio del propio
+          estudiante, reforzando continuamente su vocabulario real.
+        </p>
+
+        <div class="iphone-wrapper">
+          <div class="iphone-frame">
+            <video
+              src={video3Options}
+              autoplay
+              muted
+              loop
+              playsinline
+              class="iphone-video"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultado -->
+    <section class="space-y-6 mb-16">
+      <h2 class="section-title">Resultado pedagógico esperado</h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li>práctica autónoma sostenida fuera del aula,</li>
+        <li>consolidación progresiva del léxico,</li>
+        <li>aprendizaje individualizado en contextos colectivos,</li>
+        <li>mayor continuidad entre sesiones formativas.</li>
+      </ul>
+
+      <p>
+        Dictionapp está concebida como una herramienta complementaria,
+        no sustitutiva, del trabajo docente.
+      </p>
+    </section>
+
+    <!-- Resumen -->
+    <section class="summary-box">
+      <h2 class="text-2xl font-bold mb-4">En resumen</h2>
+
+      <p>
+        Cada usuario dispone de ejercicios generados automáticamente a partir
+        de su propio vocabulario, creando una experiencia de práctica
+        personalizada y continua orientada a la consolidación del aprendizaje
+        léxico.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Bottom Accent -->
+  <div
+    class="absolute bottom-0 left-0 right-0 h-2"
+    style="background: linear-gradient(90deg,#155263 0%,#1E758D 25%,#FFC93C 50%,#FFBB09 75%,#FFD76F 100%);"
+  />
+</div>
+
+<style>
+  main p {
+    color: #155263;
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0C2F39;
+  }
+
+  .sub-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1E758D;
+  }
+
+  .method-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(30,117,141,0.06);
+  }
+
+  .method-card h3 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #0C2F39;
+  }
+
+  .adv {
+    color: #1E758D;
+    font-weight: 700;
+  }
+
+  .dis {
+    color: #C94C4C;
+    font-weight: 700;
+  }
+
+  .quote {
+    border-left: 4px solid #FFC93C;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #0C2F39;
+    font-weight: 500;
+  }
+
+  .media-placeholder {
+    margin-top: 1.5rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(12,47,57,0.05);
+    text-align: center;
+    color: #155263;
+  }
+
+  .summary-box {
+    background: rgba(255,201,60,0.15);
+    padding: 2rem;
+    border-radius: 1.25rem;
+    color: #0C2F39;
+  }
+
+  .iphone-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+  /* iPhone más contenido y responsive */
+  .iphone-frame {
+    position: relative;
+
+    width: 100%;
+    max-width: 220px;   /* 👈 tamaño máximo */
+    aspect-ratio: 9 / 19.5;
+
+    padding: 10px;
+    border-radius: 36px;
+    background: #111;
+
+    box-shadow:
+      0 20px 40px rgba(12, 47, 57, 0.18),
+      inset 0 0 0 2px #2a2a2a;
+  }
+
+  /* Pantalla */
+  .iphone-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 26px;
+  }
+
+  /* Notch más pequeño */
+  .iphone-frame::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 16px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 2;
+  }
+</style>
+</Layout>
