@@ -4,68 +4,146 @@ import logoImage from '../assets/logo.png';
 const { current = "" } = Astro.props;
 ---
 
-<nav class="container mx-auto px-6 py-6">
+<nav class="container mx-auto px-6 py-6 relative z-50">
+    <div id="menu-overlay" class="menu-overlay"></div>
   <div class="flex items-center justify-between">
 
-    <!-- Logo (link a Home) -->
-    <a href="/" class="flex items-center gap-3 group">
-      <img
-        src={logoImage.src}
-        alt="Dictionapp Logo"
-        class="h-12 w-12 object-contain transition-transform group-hover:scale-105"
-      />
-
-      <span
-        class="text-2xl font-bold"
-        style="color:#0C2F39;"
-      >
+    <!-- LOGO -->
+    <a href="/" class="flex items-center gap-3">
+      <img src={logoImage.src} class="h-12 w-12 object-contain" />
+      <span class="text-2xl font-bold" style="color:#0C2F39;">
         Dictionapp
       </span>
     </a>
 
-    <!-- Navigation links -->
-    <div class="flex items-center gap-3">
+    <!-- Hamburger -->
+    <button
+      id="menu-btn"
+      class="md:hidden menu-button"
+      aria-label="Abrir menú"
+    >
+      ☰
+    </button>
 
-        <a
-            href="/"
-            class={`nav-item ${current === "home" ? "active" : ""}`}
-        >
-            Inicio
-        </a>
+    <!-- MENU -->
+    <div id="menu" class="menu md:flex md:items-center md:gap-3">
 
-        <a
-            href="/enfoque-educativo"
-            class={`nav-item ${current === "enfoque-educativo" ? "active" : ""}`}
-        >
-            Enfoque educativo
-        </a>
+      <a
+        href="/"
+        class={`nav-item ${current === "home" ? "active" : ""}`}
+      >
+        Inicio
+      </a>
+
+      <a
+        href="/enfoque-educativo"
+        class={`nav-item ${current === "enfoque-educativo" ? "active" : ""}`}
+      >
+        Enfoque educativo
+      </a>
 
     </div>
   </div>
 </nav>
 
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  const overlay = document.getElementById('menu-overlay');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('open');
+    overlay?.classList.toggle('open');
+  });
+
+  overlay?.addEventListener('click', () => {
+    menu?.classList.remove('open');
+    overlay.classList.remove('open');
+  });
+</script>
+
 <style>
-  .nav-item {
-    padding: 0.6rem 1.2rem;
-    border-radius: 999px;
-    font-weight: 700;
-    color: #0C2F39;
+/* ---------- NAV ITEMS ---------- */
+
+.nav-item {
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #0C2F39;
+  transition: all .2s ease;
+  display: inline-block;
+}
+
+.nav-item:hover {
+  background: rgba(30,117,141,0.12);
+}
+
+.nav-item.active {
+  background: #1E758D;
+  color: white;
+}
+
+/* ---------- MOBILE MENU ---------- */
+
+.menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 1.5rem;
+  right: 1.5rem;
+
+  background: rgba(255, 255, 255, 0.98); /* 👈 opaco */
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  padding: 1rem;
+
+  box-shadow:
+    0 20px 50px rgba(12,47,57,0.18);
+
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  z-index: 100; /* 👈 clave */
+}
+
+.menu.open {
+  display: flex;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .menu {
+    position: static;
+    display: flex !important;
     background: transparent;
-    transition: all 0.2s ease;
-    }
+    box-shadow: none;
+    padding: 0;
+    flex-direction: row;
+  }
+}
 
-    /* hover suave */
-    .nav-item:hover {
-    background: rgba(30,117,141,0.12);
-    }
+/* Hamburger */
+.menu-button {
+  font-size: 1.8rem;
+  color: #0C2F39;
+}
 
-    /* página activa */
-    .nav-item.active {
-    background: #1E758D;
-    color: white;
-    }
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12,47,57,0.25);
+  backdrop-filter: blur(3px);
 
-    nav {
-    backdrop-filter: blur(8px);
-    }
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+
+  z-index: 40;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
 </style>
