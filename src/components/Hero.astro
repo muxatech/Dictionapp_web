@@ -7,18 +7,25 @@ import appScreenshot2 from '../assets/screenshot2.png';
 
 <div
   class="relative min-h-screen overflow-hidden"
-  
+  style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);"
 >
+  <!-- Background SVG -->
+  <div class="absolute inset-0 opacity-5 pointer-events-none">
+    <img src={backgroundSvg.src} alt="" class="w-full h-full object-cover" />
+  </div>
 
   <!-- Main Content -->
-  <div class="container mx-auto px-6 py-12 md:py-20">
+  <div class="container mx-auto px-6 py-12 md:py-20 relative z-10">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- Left Column - Text Content -->
       <div class="space-y-8">
         <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold" style="background-color: rgba(255, 201, 60, 0.2); color: #0C2F39;">
+            <span>★</span> 4.8 en Google Play
+          </div>
           <h1
-            class="text-5xl md:text-6xl lg:text-7xl leading-tight"
-            style="color: #0C2F39; font-weight: 800;"
+            class="text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold"
+            style="color: #0C2F39;"
           >
             Tu vocabulario,{" "}
             <span style="color: #1E758D;">a otro nivel</span>
@@ -27,8 +34,24 @@ import appScreenshot2 from '../assets/screenshot2.png';
             class="text-xl md:text-2xl"
             style="color: #155263; font-weight: 500;"
           >
-            Descubre el futuro estándar del aprendizaje de vocabulario.
+            El método más eficaz para aprender vocabulario. Crea tu diccionario personal y practica con ejercicios generados automáticamente.
           </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex gap-8 text-sm" style="color: #155263;">
+          <div>
+            <span class="font-bold text-2xl" style="color: #0C2F39;">50+</span>
+            <p>Descargas</p>
+          </div>
+          <div>
+            <span class="font-bold text-2xl" style="color: #0C2F39;">4.8★</span>
+            <p>Valoración</p>
+          </div>
+          <div>
+            <span class="font-bold text-2xl" style="color: #0C2F39;">100%</span>
+            <p>Gratis</p>
+          </div>
         </div>
 
         <!-- Download Buttons -->
@@ -37,7 +60,7 @@ import appScreenshot2 from '../assets/screenshot2.png';
             href="https://play.google.com/store/apps/details?id=com.studiomuxatech.dictionapp"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 px-8 py-6 text-lg rounded-lg transition-colors hover:opacity-90 flex-1 justify-center"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg rounded-xl transition-all hover:opacity-90 hover:scale-105 flex-1 justify-center shadow-lg"
             style="background-color: #FFC93C; color: #0C2F39; font-weight: 700;"
           >
             <svg
@@ -50,14 +73,14 @@ import appScreenshot2 from '../assets/screenshot2.png';
               <path fill="#EA4335" d="M17 9.7L22.5 12 17 14.3 1.5 23z"/>
               <path fill="#4285F4" d="M1.5 0.5l21 11.5-21 11.5z" opacity=".2"/>
             </svg>
-            Descargar en Google Play
+            Google Play
           </a>
 
           <a
             href="https://apps.apple.com/es/app/dictionapp/id6754826488"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 px-8 py-6 text-lg rounded-lg transition-colors hover:opacity-90 flex-1 justify-center"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg rounded-xl transition-all hover:opacity-90 hover:scale-105 flex-1 justify-center shadow-lg"
             style="background-color: #155263; color: #FFD76F; font-weight: 700;"
           >
             <img
@@ -65,51 +88,46 @@ import appScreenshot2 from '../assets/screenshot2.png';
               alt="App Store Icon"
               class="h-6 w-6"
             />
-            Descargar en App Store
+            App Store
           </a>
         </div>
 
-        <!-- Footer Text -->
-        <div class="pt-8">
-          <p
-            class="text-sm"
-            style="color: #155263; font-weight: 500;"
-          >
-            Powered by <span style="font-weight: 700;">Studio Muxa Tech, S.L.</span>
-          </p>
-        </div>
+        <!-- Trust Text -->
+        <p class="text-sm" style="color: #155263;">
+          Disponible para iOS y Android. Sin coste de entrada.
+        </p>
       </div>
 
       <!-- Right Column - App Screenshots -->
-      <div class="relative flex items-center justify-center gap-6">
+      <div class="relative flex items-center justify-center gap-6 py-8">
         <!-- Screenshot 1 -->
         <div
-          class="relative z-10 transform hover:scale-105 transition-transform duration-300 w-auto max-w-[250px]"
-          style="filter: drop-shadow(0 25px 50px rgba(12, 47, 57, 0.25));"
+          class="relative z-10 transform hover:scale-105 transition-transform duration-300 w-auto max-w-[240px]"
+          style="filter: drop-shadow(0 25px 50px rgba(12, 47, 57, 0.3));"
         >
           <img
             src={appScreenshot1.src}
             alt="Dictionapp Screenshot 1"
-            class="w-full h-auto max-h-[500px] object-contain rounded-3xl"
+            class="w-full h-auto max-h-[500px] object-contain rounded-3xl border-4 border-white"
           />
         </div>
 
         <!-- Screenshot 2 -->
         <div
-          class="relative transform hover:scale-105 transition-transform duration-300 w-auto max-w-[250px]"
-          style="filter: drop-shadow(0 25px 50px rgba(12, 47, 57, 0.25)); margin-top: 60px;"
+          class="relative transform hover:scale-105 transition-transform duration-300 w-auto max-w-[240px]"
+          style="filter: drop-shadow(0 25px 50px rgba(12, 47, 57, 0.3)); margin-top: 60px;"
         >
           <img
             src={appScreenshot2.src}
             alt="Dictionapp Screenshot 2"
-            class="w-full h-auto max-h-[500px] object-contain rounded-3xl"
+            class="w-full h-auto max-h-[500px] object-contain rounded-3xl border-4 border-white"
           />
         </div>
 
-        <!-- Decorative Element -->
+        <!-- Decorative Gradient -->
         <div
-          class="absolute -z-10 w-96 h-96 rounded-full blur-3xl opacity-30"
-          style="background-color: #FFC93C; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+          class="absolute -z-10 w-96 h-96 rounded-full blur-3xl opacity-40"
+          style="background: linear-gradient(135deg, #FFC93C, #1E758D); top: 50%; left: 50%; transform: translate(-50%, -50%);"
         />
       </div>
     </div>
