@@ -12,10 +12,15 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="<https://fonts.googleapis.com>">
-    <link rel="preconnect" href="<https://fonts.gstatic.com>" crossorigin>
-    <link href="<https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap>" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>{title}</title>
+    <meta name="description" content="Dictionapp - Aprende vocabulario de forma inteligente con tu propio diccionario personal y ejercicios automáticos." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Tu vocabulario, a otro nivel. Crea tu diccionario personal y practica con ejercicios generados automáticamente." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
   </head>
   <body style="font-family: 'Rubik', sans-serif;">
     <slot />

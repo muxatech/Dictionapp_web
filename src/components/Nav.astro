@@ -42,6 +42,27 @@ const { current = "" } = Astro.props;
         Enfoque educativo
       </a>
 
+      <a
+        href="/academias"
+        class={`nav-item ${current === "academias" ? "active" : ""}`}
+      >
+        Academias
+      </a>
+
+      <a
+        href="/contacto"
+        class={`nav-item ${current === "contacto" ? "active" : ""}`}
+      >
+        Contacto
+      </a>
+
+      <a
+        href="/download"
+        class="nav-cta"
+      >
+        Probar ahora
+      </a>
+
     </div>
   </div>
 </nav>
@@ -81,6 +102,20 @@ const { current = "" } = Astro.props;
 .nav-item.active {
   background: #1E758D;
   color: white;
+}
+
+.nav-cta {
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  background: #FFC93C;
+  color: #0C2F39;
+  transition: all .2s ease;
+  display: inline-block;
+}
+
+.nav-cta:hover {
+  background: #FFBB09;
 }
 
 /* ---------- MOBILE MENU ---------- */

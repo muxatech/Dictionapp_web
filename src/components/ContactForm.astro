@@ -1,0 +1,98 @@
+<section class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6 max-w-2xl">
+    <h2 class="text-4xl font-bold text-center mb-4" style="color:#0C2F39;">
+      Contáctanos
+    </h2>
+    <p class="text-center text-gray-600 mb-12">
+      ¿Tienes preguntas? Escríbenos y te responderemos pronto.
+    </p>
+
+    <form
+      action="https://formspree.io/f/your-form-id"
+      method="POST"
+      class="space-y-6 bg-white p-8 rounded-2xl shadow-sm"
+    >
+      <div>
+        <label for="name" class="block font-bold mb-2" style="color:#0C2F39;">
+          Nombre
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+          style="border-color: #1E758D;"
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block font-bold mb-2" style="color:#0C2F39;">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+          style="border-color: #1E758D;"
+        />
+      </div>
+
+      <div>
+        <label for="subject" class="block font-bold mb-2" style="color:#0C2F39;">
+          Asunto
+        </label>
+        <select
+          id="subject"
+          name="subject"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+          style="border-color: #1E758D;"
+        >
+          <option value="">Selecciona una opción</option>
+          <option value="general">Consulta general</option>
+          <option value="academy">Información para academias</option>
+          <option value="support">Soporte técnico</option>
+          <option value="partnership">Colaboraciones</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message" class="block font-bold mb-2" style="color:#0C2F39;">
+          Mensaje
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 resize-none"
+          style="border-color: #1E758D;"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full py-4 rounded-full font-bold text-lg transition hover:scale-105"
+        style="background: #FFC93C; color: #0C2F39;"
+      >
+        Enviar mensaje
+      </button>
+    </form>
+
+    <div class="mt-12 text-center">
+      <p class="font-bold mb-2" style="color:#0C2F39;">También puedes escribirnos a:</p>
+      <a href="mailto:info@dictionapp.com" class="text-lg" style="color:#1E758D;">
+        info@dictionapp.com
+      </a>
+
+      <div class="flex justify-center gap-6 mt-6">
+        <a href="#" class="text-gray-600 hover:text-blue-500 transition">Twitter</a>
+        <a href="#" class="text-gray-600 hover:text-blue-700 transition">Facebook</a>
+        <a href="#" class="text-gray-600 hover:text-pink-600 transition">Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
