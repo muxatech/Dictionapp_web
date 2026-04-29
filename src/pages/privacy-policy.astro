@@ -1,139 +1,138 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
 ---
-<Layout title="Privacy Policy">
-    <div class="max-w-3xl mx-auto px-4 py-10 text-neutral-900 leading-relaxed">
-  <h1 class="text-3xl font-bold mb-4 text-[#1E758D]">Privacy Policy — Dictionapp</h1>
 
-  <p class="mb-6">
-    <strong>Company:</strong> Studio Muxa Tech, S.L. 
-    <span class="px-2">|</span>
-    <strong>Last updated:</strong> November 28, 2025
-  </p>
+<Layout title="Dictionapp - Política de privacidad">
+  <Nav current="privacy-policy" />
+  <section class="pt-32 pb-12" style="background: linear-gradient(135deg, #155263, #0C2F39);">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold text-white mb-6">
+        Política de privacidad
+      </h1>
+    </div>
+  </section>
 
-  <p class="mb-6">
-    This Privacy Policy explains how <strong>Dictionapp</strong> (the “App”), operated by 
-    <strong>Studio Muxa Tech, S.L.</strong>, collects, uses, shares and protects personal data. 
-    By using the App you accept the practices described here.
-  </p>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl prose prose-lg">
+      <p class="mb-6">
+        <strong>Empresa:</strong> Studio Muxa Tech, S.L. 
+        <span class="px-2">|</span>
+        <strong>Última actualización:</strong> Abril 2026
+      </p>
 
-  <!-- 1 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">1. Information We Collect</h2>
+      <p class="mb-6">
+        Esta Política de Privacidad explica cómo <strong>Dictionapp</strong> (la "App"), operada por 
+        <strong>Studio Muxa Tech, S.L.</strong>, recoge, usa, comparte y protege los datos personales. 
+        Al usar la App aceptas las prácticas descritas aquí.
+      </p>
 
-  <h3 class="text-xl font-semibold mt-6 mb-2">1.1 Information You Provide</h3>
-  <p class="mb-4">
-    <strong>Email address:</strong> Collected when signing in via Google or Apple. 
-    We do not store passwords.
-  </p>
+      <!-- 1 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">1. Información que recogemos</h2>
 
-  <h3 class="text-xl font-semibold mt-6 mb-2">1.2 Information Collected Automatically</h3>
-  <p class="mb-4">
-    Usage metrics such as feature usage, session duration, performance logs, 
-    and anonymized technical identifiers for improvement of the App.
-  </p>
+      <h3 class="text-xl font-bold mt-6 mb-2">1.1 Información que tú proporcionas</h3>
+      <p class="mb-4">
+        <strong>Dirección de email:</strong> Recogida al iniciar sesión vía Google o Apple. 
+        No almacenamos contraseñas.
+      </p>
 
-  <h3 class="text-xl font-semibold mt-6 mb-2">1.3 Sensitive Data</h3>
-  <p class="mb-4">
-    We do not intentionally collect sensitive personal data.
-  </p>
+      <h3 class="text-xl font-bold mt-6 mb-2">1.2 Información recogida automáticamente</h3>
+      <p class="mb-4">
+        Métricas de uso como uso de funcionalidades, duración de sesión, registros de rendimiento 
+        e identificadores técnicos anonimizados para mejora de la App.
+      </p>
 
-  <!-- 2 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">2. How We Use Your Data</h2>
-  <ul class="list-disc list-inside space-y-1 mb-6">
-    <li>To enable secure sign-in and account identification.</li>
-    <li>To provide App functionality.</li>
-    <li>To analyze usage for product improvements.</li>
-    <li>To process payments and subscriptions via app stores.</li>
-    <li>To comply with legal obligations.</li>
-  </ul>
+      <h3 class="text-xl font-bold mt-6 mb-2">1.3 Datos sensibles</h3>
+      <p class="mb-4">
+        No recogemos intencionadamente datos personales sensibles.
+      </p>
 
-  <p class="mb-6">We do not sell personal data.</p>
+      <!-- 2 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">2. Cómo usamos tus datos</h2>
+      <ul class="list-disc pl-6 space-y-1 mb-6">
+        <li>Para habilitar el inicio de sesión seguro e identificación de cuenta.</li>
+        <li>Para proporcionar funcionalidad de la App.</li>
+        <li>Para analizar el uso y mejorar la App.</li>
+        <li>Para procesar pagos y suscripciones vía tiendas de aplicaciones.</li>
+        <li>Para cumplir con obligaciones legales.</li>
+      </ul>
+      <p class="mb-6">No vendemos datos personales.</p>
 
-  <!-- 3 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">3. Third-Party Services</h2>
-  <ul class="list-disc list-inside space-y-1 mb-6">
-    <li><strong>Firebase (Google LLC)</strong> — authentication, analytics and infrastructure.</li>
-    <li><strong>Google Play Billing</strong> / <strong>Apple In-App Purchases</strong> — payment processing.</li>
-  </ul>
+      <!-- 3 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">3. Servicios de terceros</h2>
+      <ul class="list-disc pl-6 space-y-1 mb-6">
+        <li><strong>Firebase (Google LLC)</strong> — autenticación, analíticas e infraestructura.</li>
+        <li><strong>Google Play Billing</strong> / <strong>Apple In-App Purchases</strong> — procesamiento de pagos.</li>
+      </ul>
 
-  <!-- 4 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">4. Geographic Scope & Compliance</h2>
-  <p class="mb-6">
-    The App operates in Spain and the United States, with planned expansion to the EU and LATAM. 
-    GDPR protections apply to users in the European Union.
-  </p>
+      <!-- 4 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">4. Ámbito geográfico y cumplimiento</h2>
+      <p class="mb-6">
+        La App opera en España y Estados Unidos, con expansión prevista a la UE y LATAM. 
+        Las protecciones del RGPD se aplican a usuarios en la Unión Europea.
+      </p>
 
-  <!-- 5 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">5. Legal Basis for Processing (GDPR)</h2>
-  <ul class="list-disc list-inside space-y-1 mb-6">
-    <li><strong>Contract performance</strong> — providing App functionality.</li>
-    <li><strong>Consent</strong> — when required for specific processing.</li>
-    <li><strong>Legitimate interest</strong> — analytics and App improvement.</li>
-  </ul>
+      <!-- 5 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">5. Base legal para el tratamiento (RGPD)</h2>
+      <ul class="list-disc pl-6 space-y-1 mb-6">
+        <li><strong>Ejecución de contrato</strong> — proporcionar funcionalidad de la App.</li>
+        <li><strong>Consentimiento</strong> — cuando sea necesario para tratamientos específicos.</li>
+        <li><strong>Interés legítimo</strong> — analíticas y mejora de la App.</li>
+      </ul>
 
-  <!-- 6 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">6. Data Retention</h2>
-  <p class="mb-6">
-    Data is retained while your account remains active. Upon deletion request, data is removed 
-    according to our providers’ technical retention schedules.
-  </p>
+      <!-- 6 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">6. Retención de datos</h2>
+      <p class="mb-6">
+        Los datos se retienen mientras tu cuenta permanezca activa. Al solicitar eliminación, 
+        los datos se eliminan según los cronogramas de retención técnica de nuestros proveedores.
+      </p>
 
-  <!-- 7 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">7. User Rights</h2>
+      <!-- 7 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">7. Derechos del usuario</h2>
+      <p class="mb-4">Según tu región, puedes:</p>
+      <ul class="list-disc pl-6 space-y-1 mb-6">
+        <li>Acceder a tus datos.</li>
+        <li>Solicitar correcciones.</li>
+        <li>Solicitar eliminación.</li>
+        <li>Oponerte a ciertos tratamientos.</li>
+        <li>Solicitar portabilidad de datos.</li>
+        <li>Retirar consentimiento.</li>
+      </ul>
 
-  <p class="mb-4">Depending on your region, you may:</p>
-  <ul class="list-disc list-inside space-y-1 mb-6">
-    <li>Access your data.</li>
-    <li>Request corrections.</li>
-    <li>Request deletion.</li>
-    <li>Object to certain processing.</li>
-    <li>Request data portability.</li>
-    <li>Withdraw consent.</li>
-  </ul>
+      <!-- 8 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">8. Seguridad</h2>
+      <p class="mb-6">
+        Aplicamos medidas técnicas y organizativas razonables, incluyendo cifrado 
+        e infraestructura segura (Firebase). No se puede garantizar seguridad absoluta.
+      </p>
 
-  <p class="mb-6">
-    <strong>Account deletion:</strong> Email  
-    <a href="mailto:dictionapp.muxatech@gmail.com" class="underline">
-      dictionapp.muxatech@gmail.com
-    </a>  
-    with the subject “Delete Dictionapp account”.
-  </p>
+      <!-- 9 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">9. Menores</h2>
+      <p class="mb-6">
+        La App no está destinada a menores de 13 años. Si se detectan datos de este tipo, 
+        contáctanos para su eliminación.
+      </p>
 
-  <!-- 8 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">8. Security</h2>
-  <p class="mb-6">
-    We apply reasonable technical and organizational measures, including encryption 
-    and secure infrastructure (Firebase). Absolute security cannot be guaranteed.
-  </p>
+      <!-- 10 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">10. Cambios en esta política</h2>
+      <p class="mb-6">
+        Podemos actualizar esta Política ocasionalmente. Los cambios significativos se comunicarán 
+        a través de la App o canales apropiados.
+      </p>
 
-  <!-- 9 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">9. Minors</h2>
-  <p class="mb-6">
-    The App is not intended for children under 13. If such data is detected, 
-    contact us for removal.
-  </p>
+      <!-- 11 -->
+      <h2 class="text-2xl font-bold mt-10 mb-3" style="color:#0C2F39;">11. Contacto</h2>
+      <div class="bg-gray-50 border border-gray-200 p-4 rounded-md mb-6">
+        <strong>Studio Muxa Tech, S.L.</strong><br />
+        Email: 
+        <a href="mailto:info@dictionapp.com" class="underline" style="color:#1E758D;">
+          info@dictionapp.com
+        </a>
+      </div>
 
-  <!-- 10 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">10. Changes to This Policy</h2>
-  <p class="mb-6">
-    We may update this Policy occasionally. Significant changes will be communicated 
-    through the App or appropriate channels.
-  </p>
-
-  <!-- 11 -->
-  <h2 class="text-2xl font-semibold mt-10 mb-3 text-[#1E758D]">11. Contact</h2>
-  <div class="bg-neutral-100 border border-neutral-200 p-4 rounded-md mb-6">
-    <strong>Studio Muxa Tech, S.L.</strong><br />
-    Email: 
-    <a href="mailto:dictionapp.muxatech@gmail.com" class="underline">
-      dictionapp.muxatech@gmail.com
-    </a>
-  </div>
-
-  <p class="text-sm text-neutral-600">
-    © Studio Muxa Tech, S.L. — Privacy Policy for Dictionapp. Last updated: November 28, 2025.
-  </p>
-</div>
-
+      <p class="text-sm text-gray-500">
+        © Studio Muxa Tech, S.L. — Política de Privacidad de Dictionapp. Última actualización: Abril 2026.
+      </p>
+    </div>
+  </section>
 </Layout>
